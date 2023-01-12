@@ -1,0 +1,17 @@
+name: gcc
+on: push
+jobs:
+  cpp20-test:
+    name: hello_world
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # - name: install deps
+    #   run: (git clone --depth=1 -b v0.5.0 https://github.com/google/glog.git && cd glog && mkdir build && cd build && cmake .. && make -j8 && sudo make install)
+    - name: run hello world
+      run: cd module/hello_world && bash -ex run.sh
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: module/hello_world/run.sh
