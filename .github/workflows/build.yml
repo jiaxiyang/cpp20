@@ -8,8 +8,10 @@ jobs:
     - uses: actions/checkout@v2
     # - name: install deps
     #   run: (git clone --depth=1 -b v0.5.0 https://github.com/google/glog.git && cd glog && mkdir build && cd build && cmake .. && make -j8 && sudo make install)
-    - name: run hello world
+    - name: run module hello world
       run: cd module/hello_world && bash -ex run.sh
+    - name: run coroutine hello world
+      run: cd coroutine/hello_world && bash -ex run.sh
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
